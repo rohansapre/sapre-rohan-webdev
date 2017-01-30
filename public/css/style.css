@@ -1,3 +1,40 @@
-.center {
-    text-align: center;
+.form-group {
+    margin-bottom: 10px;
+}
+
+.profile-block {
+    margin-top: 25px;
+}
+
+.user-website-navbar {
+    background-color: #286090;
+}
+
+.list-color {
+    color: #286090;
+}
+.user-website-navbar .navbar-brand {
+    color: white;
+}
+.user-website-navbar .navbar-link {
+    color: white;
+}
+.user-website-navbar a {
+    color: white;
+}
+body {
+    padding-top: 36px;
+    padding-bottom: 60px;
+}
+
+.separation {
+    border-right: 1px solid gray;
+}
+
+.dark-navs a {
+    color: black;
+}
+
+li.borderless {
+    border: none;
 }
