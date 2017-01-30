@@ -35,6 +35,14 @@ body {
     color: black;
 }
 
+.dark-draggable {
+    color: black;
+}
+
 li.borderless {
     border: none;
+}
+
+.widget-glyphis {
+    font-size: 18px;
 }
