@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 <html lang="en">
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -12,7 +12,7 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -22,19 +22,19 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a href="#">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -53,56 +53,91 @@
             <li class="list-group-item borderless">
                 <div class="row">
                     <div class="col-xs-10 list-color">
-                        Blogging App
+                        <a href="../page_pages/page-list.html">
+                            Blogging App
+                        </a>
                     </div>
                     <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                        <a href="website-edit.html">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
                     </div>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div class="row">
                     <div class="col-xs-10 list-color">
-                        Address Book App
+                        <a href="../page_pages/page-list.html">
+                            Address Book App
+                        </a>
                     </div>
                     <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                        <a href="website-edit.html">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
                     </div>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div class="row">
                     <div class="col-xs-10 list-color">
-                        Script Testing App
+                        <a href="../page_pages/page-list.html">
+                            Script Testing App
+                        </a>
                     </div>
                     <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                        <a href="website-edit.html">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
                     </div>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div class="row">
                     <div class="col-xs-10 list-color">
-                        Blogger
+                        <a href="../page_pages/page-list.html">
+                            Blogger
+                        </a>
                     </div>
                     <div class="col-xs-2">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                        <a href="website-edit.html">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item borderless">
+                <div class="row">
+                    <div class="col-xs-10 list-color">
+                        <a href="../page_pages/page-list.html">
+                            Gizmodo
+                        </a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="website-edit.html">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
     <div class="col-sm-8 profile-block">
-        <label for="website-name">Website Name</label>
-        <input placeholder="Website Name"
-               class="form-control"
-               id="website-name"/>
-
-        <label for="website-description">Website Description</label>
-        <textarea placeholder="Website Description"
-                  class="form-control"
-                  id="website-description"></textarea>
-
+        <form>
+            <div class="form-group">
+                <label for="website-name">Website Name</label>
+                <input type="text"
+                       placeholder="Name"
+                       class="form-control"
+                       id="website-name"/>
+            </div>
+            <div class="form-group">
+                <label for="website-description">Description</label>
+                <textarea placeholder="Description"
+                          class="form-control"
+                          id="website-description"></textarea>
+            </div>
+        </form>
         <a href="website-list.html" class="btn btn-primary btn-block">
             Create
         </a>
@@ -113,7 +148,7 @@
     <div class="container-fluid">
         <div class="row navbar-text pull-right">
             <div class="col-xs-3 text-center">
-                <a href="#">
+                <a href="../user_pages/profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

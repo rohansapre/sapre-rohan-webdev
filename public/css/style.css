@@ -13,6 +13,15 @@
 .list-color {
     color: #286090;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
 .user-website-navbar .navbar-brand {
     color: white;
 }
@@ -22,13 +31,15 @@
 .user-website-navbar a {
     color: white;
 }
+
 body {
     padding-top: 36px;
     padding-bottom: 60px;
 }
 
 .separation {
-    border-right: 1px solid gray;
+    border-right: 1px solid lightgray;
+    height: 100%;
 }
 
 .dark-navs a {

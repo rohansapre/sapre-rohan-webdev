@@ -12,7 +12,7 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -22,19 +22,19 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a href="#">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -96,14 +96,15 @@
         <form>
             <div class="form-group">
                 <label for="website-name">Website Name</label>
-                <input placeholder="Website Name"
-                       value="Facebook"
+                <input type="text"
+                       placeholder="Name"
+                       value="ToDoList"
                        class="form-control"
                        id="website-name"/>
             </div>
             <div class="form-group">
                 <label for="website-description">Website Description</label>
-                <textarea placeholder="Website Description"
+                <textarea placeholder="Description"
                           class="form-control"
                           id="website-description">This is the description of facebook website</textarea>
             </div>
@@ -116,11 +117,20 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom user-website-navbar">
     <div class="container-fluid">
-        <div class="row navbar-text pull-right">
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
+        <div class="row">
+            <div class="navbar-text pull-left">
+                <div class="col-xs-3 text-center">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-share"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-text pull-right">
+                <div class="col-xs-3 text-center">
+                    <a href="../user_pages/profile.html">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
