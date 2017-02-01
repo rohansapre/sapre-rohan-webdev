@@ -3,7 +3,7 @@
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Widget Edit</title>
 </head>
 <body>
@@ -11,12 +11,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left dark-navs">
-            <a>
+            <a href="widget-list.html">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right dark-navs">
-            <a>
+            <a href="widget-list.html">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -32,23 +32,27 @@
         <form>
             <div class="form-group">
                 <label for="widget-name">Name</label>
-                <input class="form-control"
+                <input type="text"
+                       placeholder="Widget Name"
+                       class="form-control"
                        id="widget-name"/>
             </div>
             <div class="form-group">
                 <label for="widget-text">Text</label>
-                <input value="US Senate Reaches Compromise on Emergency Zika Funding"
+                <input type="text"
+                       value="US Senate Reaches Compromise on Emergency Zika Funding"
                        class="form-control"
                        id="widget-text"/>
             </div>
             <div class="form-group">
                 <label for="widget-size">Size</label>
-                <input value="3"
+                <input type="text"
+                       value="3"
                        class="form-control"
                        id="widget-size"/>
             </div>
         </form>
-        <a href="website-list.html" class="btn btn-danger btn-block">
+        <a href="widget-list.html" class="btn btn-danger btn-block">
             Delete
         </a>
     </div>
@@ -58,7 +62,7 @@
     <div class="container-fluid">
         <div class="row navbar-text pull-right">
             <div class="col-xs-3 text-center">
-                <a href="#">
+                <a href="../user_pages/profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
