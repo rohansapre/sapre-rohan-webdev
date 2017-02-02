@@ -6,7 +6,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Website New</title>
 </head>
-<body>
+<body class="avoid-scroll">
 
 <nav class="navbar navbar-default navbar-fixed-top user-website-navbar">
     <div class="row container-fluid">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="navbar-text pull-left">
+            <div class="navbar-text pull-left visible-xs-block">
                 <a href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
@@ -50,80 +50,50 @@
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs profile-block separation">
         <ul class="list-group">
-            <li class="list-group-item borderless">
-                <div class="row">
-                    <div class="col-xs-10 list-color">
-                        <a href="../page_pages/page-list.html">
-                            Blogging App
-                        </a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a href="website-edit.html">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
+            <li class="list-group-item borderless list-color">
+                <a href="../page_pages/page-list.html">
+                    Blogging App
+                </a>
+                <a href="website-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
             </li>
-            <li class="list-group-item borderless">
-                <div class="row">
-                    <div class="col-xs-10 list-color">
-                        <a href="../page_pages/page-list.html">
-                            Address Book App
-                        </a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a href="website-edit.html">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
+            <li class="list-group-item borderless list-color">
+                <a href="../page_pages/page-list.html">
+                    Address Book App
+                </a>
+                <a href="website-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
             </li>
-            <li class="list-group-item borderless">
-                <div class="row">
-                    <div class="col-xs-10 list-color">
-                        <a href="../page_pages/page-list.html">
-                            Script Testing App
-                        </a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a href="website-edit.html">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
+            <li class="list-group-item borderless list-color">
+                <a href="../page_pages/page-list.html">
+                    Script Testing App
+                </a>
+                <a href="website-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
             </li>
-            <li class="list-group-item borderless">
-                <div class="row">
-                    <div class="col-xs-10 list-color">
-                        <a href="../page_pages/page-list.html">
-                            Blogger
-                        </a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a href="website-edit.html">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
+            <li class="list-group-item borderless list-color">
+                <a href="../page_pages/page-list.html">
+                    Blogger
+                </a>
+                <a href="website-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
             </li>
-            <li class="list-group-item borderless">
-                <div class="row">
-                    <div class="col-xs-10 list-color">
-                        <a href="../page_pages/page-list.html">
-                            Gizmodo
-                        </a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a href="website-edit.html">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
+            <li class="list-group-item borderless list-color">
+                <a href="../page_pages/page-list.html">
+                    Gizmodo
+                </a>
+                <a href="website-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
             </li>
         </ul>
     </div>
     <div class="col-sm-8 profile-block">
-        <form>
+        <div class="container-fluid">
             <div class="form-group">
                 <label for="website-name">Website Name</label>
                 <input type="text"
@@ -138,21 +108,19 @@
                           class="form-control"
                           id="website-description"></textarea>
             </div>
-        </form>
-        <a href="website-list.html" class="btn btn-primary btn-block">
-            Create
-        </a>
+            <a href="website-list.html" class="btn btn-primary btn-block">
+                Create
+            </a>
+        </div>
     </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom user-website-navbar">
     <div class="container-fluid">
-        <div class="row navbar-text pull-right">
-            <div class="col-xs-3 text-center">
-                <a href="../user_pages/profile.html">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+        <div class="navbar-text pull-right">
+            <a href="../user_pages/profile.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
 </nav>
