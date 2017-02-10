@@ -4,7 +4,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Widget Edit</title>
+    <title>Widget Image</title>
 </head>
 <body>
 
@@ -39,17 +39,33 @@
         <div class="form-group">
             <label for="widget-text">Text</label>
             <input type="text"
-                   value="US Senate Reaches Compromise on Emergency Zika Funding"
                    class="form-control"
+                   placeholder="Widget Text"
                    id="widget-text"/>
         </div>
         <div class="form-group">
-            <label for="widget-size">Size</label>
+            <label for="widget-url">URL</label>
             <input type="text"
-                   value="3"
+                   value="https://i.kinja-img.com/gawker-media/image.jpeg"
                    class="form-control"
-                   id="widget-size"/>
+                   id="widget-url"/>
         </div>
+        <div class="form-group">
+            <label for="widget-width">Width</label>
+            <input type="text"
+                   value="100%"
+                   class="form-control"
+                   id="widget-width"/>
+        </div>
+        <div class="form-group">
+            <label for="widget-upload">Upload</label>
+            <input type="file"
+                   class="form-control"
+                   id="widget-upload"/>
+        </div>
+        <a href="widget-list.html" class="btn btn-primary btn-block">
+            Upload Image
+        </a>
         <a href="widget-list.html" class="btn btn-danger btn-block">
             Delete
         </a>
@@ -59,7 +75,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="../user_pages/profile.html">
+            <a href="../assignment/user_pages/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
