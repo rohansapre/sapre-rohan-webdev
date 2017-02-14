@@ -39,7 +39,9 @@
                 controllerAs: 'model'
             })
             .when("/user/:uid/website/:wid", {
-                templateUrl: "views/website/templates/website-edit.view.client.html"
+                templateUrl: "views/website/templates/website-edit.view.client.html",
+                controller: 'EditWebsiteController',
+                controllerAs: 'model'
             })
             .when("/user/:uid/website/:wid/page", {
                 templateUrl: "views/page/templates/page-list.view.client.html"
