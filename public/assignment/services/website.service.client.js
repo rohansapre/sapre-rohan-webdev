@@ -27,8 +27,9 @@
 
         function createWebsite(userId, website) {
             website.developerId = userId;
+            website._id = (new Date()).getTime().toString();
             websites.push(website);
-            console.log(websites);
+            return website;
         }
 
         function findWebsitesByUser(userId) {

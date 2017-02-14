@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("WebsiteListController", WebsiteListController);
 
-    function WebsiteListController(WebsiteService, $routeParams, $location) {
+    function WebsiteListController(WebsiteService, $routeParams) {
         var vm = this;
 
         var userId = $routeParams.uid;
