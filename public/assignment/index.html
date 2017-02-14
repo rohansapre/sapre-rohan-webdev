@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WebAppMaker">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--SERVICES-->
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+
+    <!--CONTROLLERS-->
+
+    <!--USER-->
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+
+    <!--WEBSITES-->
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+
+    <title>Title</title>
+</head>
+<body>
+    <div ng-view></div>
+</body>
+</html>

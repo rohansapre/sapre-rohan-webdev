@@ -1,7 +1,87 @@
-input.form-control {
-    margin-bottom: 5px;
+.form-group {
+    margin-bottom: 10px;
+}
+
+.profile-block {
+    margin-top: 25px;
+}
+
+.user-website-navbar {
+    background-color: #286090;
+}
+
+.list-color {
+    color: #286090;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.user-website-navbar .navbar-brand {
+    color: white;
+}
+.user-website-navbar .navbar-link {
+    color: white;
+}
+.user-website-navbar a {
+    color: white;
 }
 
 body {
     padding-top: 36px;
+    padding-bottom: 60px;
+    overflow-x: hidden;
+}
+
+body.avoid-scroll {
+    overflow: hidden;
+}
+
+.separation {
+    border-right: 1px solid lightgray;
+    /*height: 97.2%;*/
+    height: 100%;
+    /*height: 99%;*/
+}
+
+.dark-navs a {
+    color: black;
+}
+
+.dark-draggable {
+    color: black;
+}
+
+li.borderless {
+    border: none;
+}
+
+.widget-glyphis {
+    font-size: 18px;
+}
+
+.right-corner {
+    position: absolute;
+    margin-right: 15px;
+    margin-top: 15px;
+    z-index: 2;
+}
+
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.7;
+}
+
+div {
+    overflow: hidden;
 }
