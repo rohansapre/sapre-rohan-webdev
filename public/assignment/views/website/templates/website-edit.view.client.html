@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top user-website-navbar">
+<nav class="navbar navbar-inverse navbar-fixed-top user-website-navbar">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
@@ -9,6 +9,11 @@
             <div class="navbar-header">
                 <a class="navbar-brand">
                     <strong>Websites</strong>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}/website/new">
+                    <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
@@ -44,9 +49,7 @@
                         </a>
                     </div>
                     <div class="col-xs-6">
-                        <a href="#/user/{{model.userId}}/website/new" class="pull-right">
-                            <span class="glyphicon glyphicon-plus pull-right"></span>
-                        </a>
+                        <span class="pull-right">Edit</span>
                     </div>
                 </div>
             </li>
@@ -94,6 +97,9 @@
                           class="form-control"
                           id="website-description">This is the description of facebook website</textarea>
             </div>
+            <a ng-click="model.update(model.website)" class="btn btn-primary btn-block">
+                Update
+            </a>
             <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block">
                 Delete
             </a>
@@ -101,7 +107,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom user-website-navbar">
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-website-navbar">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
             <a href="#">

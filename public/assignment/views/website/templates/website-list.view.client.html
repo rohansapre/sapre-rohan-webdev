@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top user-website-navbar">
+<nav class="navbar navbar-inverse navbar-fixed-top user-website-navbar">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
             <a href="#/user/{{model.userId}}">
@@ -6,7 +6,9 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dropdown <span class="caret"></span></a>
+            <a href="#/user/{{model.userId}}/website/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
         </div>
         <div class="navbar-header">
             <a href="#/user/{{model.userId}}/website" class="navbar-brand no-left-padding no-left-margin">
@@ -40,9 +42,7 @@
                         </a>
                     </div>
                     <div class="col-xs-6 col-sm-1">
-                        <a href="#/user/{{model.userId}}/website/new" class="pull-right">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
+                        <span class="pull-right">Edit</span>
                     </div>
                 </div>
             </li>
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom user-website-navbar">
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-website-navbar">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
             <a href="#/user/{{model.userId}}">
