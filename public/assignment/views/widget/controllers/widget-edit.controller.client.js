@@ -12,13 +12,9 @@
         vm.deleteWidget = deleteWidget;
 
         function init() {
-            var userId = $routeParams.uid;
-            vm.userId = userId;
-            var websiteId = $routeParams.wid;
-            vm.websiteId = websiteId;
-            var pageId = $routeParams.pid;
-            vm.pageId = pageId;
-
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+            vm.pageId = $routeParams.pid;
             vm.getOptions = WidgetService.getOptions();
             vm.widget = WidgetService.findWidgetById($routeParams.wgid);
         }

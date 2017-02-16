@@ -39,6 +39,11 @@
 
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs wbdv-left-pane profile-block separation">
+
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
+
         <ul class="list-group">
             <li class="list-group-item borderless list-color">
                 <div class="row">

@@ -19,6 +19,12 @@
 </nav>
 
 <div class="container-fluid leave-margin-bottom">
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+
     <div ng-repeat="widget in model.widgets">
         <div class="profile-block">
             <div class="jga-toolbar">

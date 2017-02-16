@@ -10,16 +10,14 @@
         var vm = this;
         vm.create = create;
 
-        var userId = $routeParams.uid;
-        vm.userId = userId;
-
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(userId);
+            vm.userId = $routeParams.uid;
+            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
         }
         init();
 
         function create(newWebsite) {
-            var website = WebsiteService.createWebsite(userId, newWebsite);
+            var website = WebsiteService.createWebsite(vm.userId, newWebsite);
             if(website) {
                 var index = $location.path().lastIndexOf("/");
                 $location.url($location.path().substring(0, index));

@@ -11,10 +11,8 @@
         vm.update = update;
         vm.deletePage = deletePage;
 
-        var userId = $routeParams.uid;
-        vm.userId = userId;
-
         function init() {
+            vm.userId = $routeParams.uid;
             vm.pages = PageService.findPageByWebsiteId($routeParams.wid);
             vm.page = PageService.findPageById($routeParams.pid);
         }

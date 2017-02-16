@@ -11,10 +11,8 @@
         vm.update = update;
         vm.deleteUser = deleteUser;
 
-        var userId = $routeParams.uid;
-
         function init() {
-            var user = UserService.findUserById(userId);
+            var user = UserService.findUserById($routeParams.uid);
             if(user) {
                 vm.user = user;
             } else {
@@ -24,7 +22,7 @@
         init();
 
         function update(newUser) {
-            var user = UserService.updateUser(userId, newUser);
+            var user = UserService.updateUser(vm.user._id, newUser);
             if(user) {
                 vm.message = "User successfully updated!";
             } else {

@@ -20,6 +20,11 @@
 
 <div class="container-fluid">
     <div class="profile-block">
+
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
+
         <ul class="list-group">
             <li class="list-group-item borderless list-color">
                 <div class="row">

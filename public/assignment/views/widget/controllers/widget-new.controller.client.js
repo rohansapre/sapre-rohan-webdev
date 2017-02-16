@@ -10,14 +10,10 @@
         var vm = this;
         vm.create = create;
 
-        var userId = $routeParams.uid;
-        vm.userId = userId;
-        var websiteId = $routeParams.wid;
-        vm.websiteId = websiteId;
-        var pageId = $routeParams.pid;
-        vm.pageId = pageId;
-
         function init() {
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+            vm.pageId = $routeParams.pid;
             vm.newWidgetHeader = {_id: "", widgetType: "HEADING", pageId: vm.pageId, size: 2, text: "New Header Text"};
             vm.newWidgetImage = {
                 _id: "",
@@ -38,7 +34,7 @@
         init();
 
         function create(newWidget) {
-            var widget = WidgetService.createWidget(pageId, newWidget);
+            var widget = WidgetService.createWidget(vm.pageId, newWidget);
             if(widget._id != "") {
                 var index = $location.path().lastIndexOf("/");
                 var navTo = $location.path().substring(0, index) + "/" + widget._id;

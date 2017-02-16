@@ -19,6 +19,11 @@
 </nav>
 
 <div ng-switch="model.widget.widgetType" class="profile-block">
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
     <div ng-switch-when="HEADING">
         <ng-include src="'views/widget/editors/widget-heading-edit.view.client.html'"></ng-include>
     </div>

@@ -11,15 +11,11 @@
         vm.checkSafeURL = checkSafeURL;
         vm.getSafeHTML = getSafeHTML;
 
-        var userId = $routeParams.uid;
-        var websiteId = $routeParams.wid;
-        var pageId = $routeParams.pid;
-        vm.userId = userId;
-        vm.websiteId = websiteId;
-        vm.pageId = pageId;
-
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(pageId);
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+            vm.pageId = $routeParams.pid;
+            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 
