@@ -6,6 +6,10 @@
     margin-top: 25px;
 }
 
+.leave-margin-bottom {
+    margin-bottom: 20px;
+}
+
 .user-website-navbar {
     color: white;
 }

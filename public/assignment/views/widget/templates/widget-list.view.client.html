@@ -1,12 +1,12 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top user-website-navbar">
     <div class="container-fluid">
-        <div class="navbar-text pull-left dark-navs">
-            <a href="../assignment/page_pages/page-list.html">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
-        <div class="navbar-text pull-right dark-navs">
-            <a href="widget-chooser.view.client.html">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
@@ -18,84 +18,43 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div class="profile-block">
-        <div class="jga-toolbar">
-            <a href="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+<div class="container-fluid leave-margin-bottom">
+    <div ng-repeat="widget in model.widgets">
+        <div class="profile-block">
+            <div class="jga-toolbar">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-switch="widget.widgetType">
+                <div ng-switch-when="HEADING">
+                    <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <ng-include src="'views/widget/templates/widget-image.view.client.html'">
+                </div>
+                <div ng-switch-when="HTML">
+                    <ng-include src="'views/widget/templates/widget-html.view.client.html'">
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <ng-include src="'views/widget/templates/widget-youtube.view.client.html'">
+                </div>
+            </div>
         </div>
-        <h1>GIZMODO</h1>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <h3>US Senate Reaches Compromise on Emergency Zika Funding</h3>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="widget-image.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-
-        <img width="100%" src="../assets/images/sailor.jpg">
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="#">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-
-        <p>Lyft’s app has surged in the App Store thanks to
-            <a href="https://techcrunch.com/2017/01/29/uber-apologizes-for-confusion-at-jfk-during-immigration-protest/">the “Delete Uber” campaign</a>
-            which took place via social media over the weekend. People were angry that Uber appeared to be taking advantage of a taxi strike at JFK in order to promote its car-hailing service. The company had tweeted that surge pricing at JFK had been switched off, shortly after the NY Taxi Workers Alliance
-            <a href="https://www.facebook.com/nytwa/posts/1562843777063129">called for a stop on pickups at the airport</a>
-            in response to what they said was the “inhumane, unconstitutional ban of Muslim refugees and travelers.”<br></p>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="widget-youtube.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <iframe width="100%" src="https://www.youtube.com/embed/-C_jPcUkVrM" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="#">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-
-        <p>Uli Emanuele pilots what is possibly the most technical and
-            difficult BASE jump ever. For the past 3 years Uli has been
-            dreaming about and preparing for what could be a world
-            record jump. With just his wingsuit and hiking poles, he
-            climbs to his exit point and realizes there is no turning back.<br></p>
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-website-navbar">
     <div class="container-fluid">
         <div class="row">
             <div class="navbar-text pull-left">
-                <div class="col-xs-3 text-center dark-navs">
+                <div class="col-xs-3 text-center">
                     <a href="#">
                         <span class="glyphicon glyphicon-play"></span>
                     </a>
                 </div>
-                <div class="col-xs-3 text-center dark-navs">
+                <div class="col-xs-3 text-center">
                     <a href="#">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
@@ -103,7 +62,7 @@
             </div>
             <div class="navbar-text pull-right">
                 <div class="col-xs-3 text-center">
-                    <a href="../assignment/user_pages/profile.html">
+                    <a href="#/user/{{model.userId}}">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </div>
