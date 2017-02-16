@@ -31,8 +31,6 @@
         }
 
         function deleteUser() {
-            console.log($location.path());
-            console.log($location.url());
             UserService.deleteUser(vm.user._id);
             var index = $location.path().lastIndexOf("/");
             var path = $location.path().substring(0, index);
