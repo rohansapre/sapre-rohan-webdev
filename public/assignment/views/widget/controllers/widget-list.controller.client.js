@@ -20,7 +20,6 @@
 
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(pageId);
-            console.log(vm.widgets);
         }
         init();
 
