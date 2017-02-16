@@ -23,11 +23,10 @@
         </div>
         <div class="form-group">
             <label for="widget-size">Size</label>
-            <input ng-model="model.widget.size"
-                   type="text"
-                   value="3"
-                   class="form-control"
-                   id="widget-size"/>
+            <select ng-model="model.widget.size"
+                    ng-options="op for op in model.getOptions"
+                    class="form-control"
+                    id="widget-size"></select>
         </div>
         <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
             Delete

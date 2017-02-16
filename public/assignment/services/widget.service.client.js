@@ -24,7 +24,8 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "getOptions": getOptions
         };
         return api;
 
@@ -70,6 +71,11 @@
                     widgets.splice(w, 1);
                 }
             }
+        }
+
+        function getOptions() {
+            var options = [1,2,3,4,5,6];
+            return options;
         }
     }
 })();

@@ -71,6 +71,7 @@
                     users.splice(u, 1);
                 }
             }
+            console.log(users);
         }
     }
 })();

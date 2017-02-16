@@ -18,6 +18,8 @@
             vm.websiteId = websiteId;
             var pageId = $routeParams.pid;
             vm.pageId = pageId;
+
+            vm.getOptions = WidgetService.getOptions();
             vm.widget = WidgetService.findWidgetById($routeParams.wgid);
         }
 
