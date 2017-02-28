@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .service("UserService", UserService);
 
-    function UserService() {
+    function UserService($http) {
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -25,7 +25,9 @@
         return api;
 
         function createUser(user) {
-            users.push(user);
+            // users.push(user);
+            // return $http.get("/api/morning/user?username="+username+"&password="+password);
+            return $http.post("/api/user", user);
         }
         
         function findUserById(userId) {
@@ -47,13 +49,7 @@
         }
 
         function findUserByCredentials(username, password) {
-            for(var u in users) {
-                if(users[u].username == username &&
-                    users[u].password == password) {
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.get("/api/morning/user?username="+username+"&password="+password);
         }
 
         function updateUser(userId, user) {
