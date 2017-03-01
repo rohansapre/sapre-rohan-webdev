@@ -13,23 +13,32 @@
 
         function init() {
             vm.userId = $routeParams.uid;
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById($routeParams.wid);
+            var promise = WebsiteService.findWebsitesByUser(vm.userId);
+            promise.success(function (response) {
+                vm.websites = response;
+            });
+            var websitePromise = WebsiteService.findWebsiteById($routeParams.wid);
+            websitePromise.success(function (response) {
+                vm.website = response;
+            });
         }
         init();
 
         function update(newWebsite) {
-            var website = WebsiteService.updateWebsite(newWebsite._id, newWebsite);
-            if(website) {
-                navigateToWebsites();
-            } else {
-                vm.error = "Unable to update website!"
-            }
+            var promise = WebsiteService.updateWebsite(newWebsite._id, newWebsite);
+            promise.success(function (response) {
+                if(response)
+                    navigateToWebsites();
+                else
+                    vm.error = "Unable to update website!"
+            });
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.website._id);
-            navigateToWebsites();
+            var promise = WebsiteService.deleteWebsite(vm.website._id);
+            promise.success(function () {
+                navigateToWebsites();
+            });
         }
 
         function navigateToWebsites() {

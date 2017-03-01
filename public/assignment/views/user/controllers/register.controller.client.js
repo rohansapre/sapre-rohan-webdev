@@ -21,12 +21,14 @@
             } else {
                 delete user['confirmPassword'];
                 user._id = (new Date()).getTime().toString();
-                UserService.createUser(user);
-                if(user) {
-                    $location.url("/user/" + user._id);
-                } else {
-                    vm.error = "Failed to register user";
-                }
+                var promise = UserService.createUser(user);
+                promise.success(function (response) {
+                    var user = response;
+                    if(user)
+                        $location.url("/user/" + user._id);
+                    else
+                        vm.error = "Failed to register user";
+                });
             }
         }
     }

@@ -3,8 +3,7 @@
  */
 module.exports = function (app) {
     app.post("/api/user", createUser);
-    app.get("/api/user?username=username", findUserByUsername);
-    app.get("/api/user?username=username&password=password", findUserByCredentials);
+    app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
@@ -18,7 +17,16 @@ module.exports = function (app) {
 
     function createUser(req, res) {
         users.push(req.body);
+        res.send(req.body);
+    }
 
+    function findUser(req, res) {
+        var username = req.query.username;
+        var password = req.query.password;
+        if(username && password)
+            findUserByCredentials(req, res);
+        else
+            findUserByUsername(req, res);
     }
 
     function findUserByUsername(req, res) {
@@ -41,7 +49,7 @@ module.exports = function (app) {
     }
 
     function findUserById(req, res) {
-        var userId = req.query.userId;
+        var userId = req.params.userId;
         var user = users.find(function (u) {
             return u._id == userId;
         });
@@ -55,6 +63,7 @@ module.exports = function (app) {
             if(users[u]._id == userId) {
                 users[u].firstName = newUser.firstName;
                 users[u].lastName = newUser.lastName;
+                users[u].email = newUser.email;
                 res.json(users[u]);
                 return;
             }
@@ -71,6 +80,5 @@ module.exports = function (app) {
             }
         }
         res.sendStatus(404);
-        return;
     }
 };

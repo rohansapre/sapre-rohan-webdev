@@ -13,18 +13,22 @@
         function init() {
             vm.userId = $routeParams.uid;
             vm.websiteId = $routeParams.wid;
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            var promise = PageService.findPageByWebsiteId(vm.websiteId);
+            promise.success(function (response) {
+                vm.pages = response;
+            });
         }
         init();
 
         function create(newPage) {
-            var page = PageService.createPage(vm.websiteId, newPage);
-            if(page) {
-                var index = $location.path().lastIndexOf("/");
-                $location.url($location.path().substring(0, index));
-            } else {
-                vm.error = "Failed to create new page";
-            }
+            var promise = PageService.createPage(vm.websiteId, newPage);
+            promise.success(function (response) {
+                if(response) {
+                    var index = $location.path().lastIndexOf("/");
+                    $location.url($location.path().substring(0, index));
+                } else
+                    vm.error = "Failed to create new page";
+            });
         }
     }
 })();

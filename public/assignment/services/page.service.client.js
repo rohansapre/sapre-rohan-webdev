@@ -6,13 +6,7 @@
         .module("WebAppMaker")
         .service("PageService", PageService);
 
-    function PageService() {
-        var pages = [
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ];
-
+    function PageService($http) {
         var api = {
             "createPage": createPage,
             "findPageByWebsiteId": findPageByWebsiteId,
@@ -24,45 +18,30 @@
 
         function createPage(websiteId, page) {
             page.websiteId = websiteId;
-            page._id = (new Date()).getTime().toString();
-            pages.push(page);
-            return page;
+            var date = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            page._id = date.getTime().toString();
+            page.lastUpdated = date.toLocaleDateString('en-US', options);
+            return $http.post("/api/website/" + websiteId + "/page", page);
         }
 
         function findPageByWebsiteId(websiteId) {
-            var websitePages = []
-            for(var p in pages) {
-                if(pages[p].websiteId == websiteId) {
-                    websitePages.push(pages[p]);
-                }
-            }
-            return websitePages;
+            return $http.get("/api/website/" + websiteId + "/page");
         }
 
         function findPageById(pageId) {
-            for(var p in pages) {
-                if(pages[p]._id == pageId) {
-                    return angular.copy(pages[p]);
-                }
-            }
-            return null;
+            return $http.get("/api/page/" + pageId);
         }
 
         function updatePage(pageId, page) {
-            for(var p in pages) {
-                if(pages[p]._id == pageId) {
-                    pages[p] = page;
-                    return pages[p];
-                }
-            }
+            var date = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            page.lastUpdated = date.toLocaleDateString('en-US', options);
+            return $http.put("/api/page/" + pageId, page);
         }
 
         function deletePage(pageId) {
-            for(var p in pages) {
-                if(pages[p]._id == pageId) {
-                    pages.splice(p, 1);
-                }
-            }
+            return $http.delete("/api/page/" + pageId);
         }
     }
 })();

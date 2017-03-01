@@ -7,13 +7,6 @@
         .service("UserService", UserService);
 
     function UserService($http) {
-        var users = [
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-        ];
-
         var api = {
             "createUser": createUser,
             "findUserById": findUserById,
@@ -25,48 +18,27 @@
         return api;
 
         function createUser(user) {
-            // users.push(user);
-            // return $http.get("/api/morning/user?username="+username+"&password="+password);
             return $http.post("/api/user", user);
         }
         
         function findUserById(userId) {
-            for(var u in users) {
-                if(users[u]._id == userId) {
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.get("/api/user/" + userId);
         }
 
         function findUserByUsername(username) {
-            for(var u in users) {
-                if(users[u].username == username) {
-                    return users[u]
-                }
-            }
-            return null;
+            return $http.get("/api/user?username=" + username);
         }
 
         function findUserByCredentials(username, password) {
-            return $http.get("/api/morning/user?username="+username+"&password="+password);
+            return $http.get("/api/user?username="+username+"&password="+password);
         }
 
         function updateUser(userId, user) {
-            for(var u in users) {
-                if(users[u]._id == userId) {
-                    users[u] = user;
-                    return users[u];
-                }
-            }
+            return $http.put("/api/user/" + userId, user);
         }
 
         function deleteUser(userId) {
-            for(var u in users) {
-                if(users[u]._id == userId) {
-                    users.splice(u, 1);
-                }
-            }
+            return $http.delete("/api/user/" + userId);
         }
     }
 })();

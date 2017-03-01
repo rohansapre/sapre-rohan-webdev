@@ -13,23 +13,33 @@
 
         function init() {
             vm.userId = $routeParams.uid;
-            vm.pages = PageService.findPageByWebsiteId($routeParams.wid);
-            vm.page = PageService.findPageById($routeParams.pid);
+            vm.websiteId = $routeParams.wid;
+            var promise = PageService.findPageByWebsiteId(vm.websiteId);
+            promise.success(function (response) {
+                vm.pages = response;
+            });
+            var pagePromise = PageService.findPageById($routeParams.pid);
+            pagePromise.success(function (response) {
+                vm.page = response;
+            });
         }
         init();
 
         function update(newPage) {
-            var page = PageService.updatePage(newPage._id, newPage);
-            if(page) {
-                navigateToPages();
-            } else {
-                vm.error = "Failed to create new page";
-            }
+            var promise = PageService.updatePage(newPage._id, newPage);
+            promise.success(function (response) {
+                if(response)
+                    navigateToPages();
+                else
+                    vm.error = "Failed to create new page";
+            });
         }
 
         function deletePage() {
-            PageService.deletePage(vm.page._id);
-            navigateToPages();
+            var promise = PageService.deletePage(vm.page._id);
+            promise.success(function () {
+                navigateToPages();
+            });
         }
 
         function navigateToPages() {

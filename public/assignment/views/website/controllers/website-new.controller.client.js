@@ -12,18 +12,23 @@
 
         function init() {
             vm.userId = $routeParams.uid;
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            var promise = WebsiteService.findWebsitesByUser(vm.userId);
+            promise.success(function (response) {
+                vm.websites = response;
+            });
         }
         init();
 
         function create(newWebsite) {
-            var website = WebsiteService.createWebsite(vm.userId, newWebsite);
-            if(website) {
-                var index = $location.path().lastIndexOf("/");
-                $location.url($location.path().substring(0, index));
-            } else {
-                vm.error = "Failed to create new website";
-            }
+            var promise = WebsiteService.createWebsite(vm.userId, newWebsite);
+            promise.success(function (response) {
+                if(response) {
+                    var index = $location.path().lastIndexOf("/");
+                    $location.url($location.path().substring(0, index));
+                }
+                else
+                    vm.error = "Failed to create new website";
+            });
         }
     }
 })();
