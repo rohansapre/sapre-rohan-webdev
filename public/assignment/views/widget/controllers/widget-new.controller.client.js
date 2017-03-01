@@ -34,14 +34,15 @@
         init();
 
         function create(newWidget) {
-            var widget = WidgetService.createWidget(vm.pageId, newWidget);
-            if(widget._id != "") {
-                var index = $location.path().lastIndexOf("/");
-                var navTo = $location.path().substring(0, index) + "/" + widget._id;
-                $location.url(navTo);
-            } else {
-                vm.error = "Failed to create new widget";
-            }
+            var promise = WidgetService.createWidget(vm.pageId, newWidget);
+            promise.success(function (response) {
+                if(response._id != "") {
+                    var index = $location.path().lastIndexOf("/");
+                    var navTo = $location.path().substring(0, index) + "/" + response._id;
+                    $location.url(navTo);
+                } else
+                    vm.error = "Failed to create new widget";
+            });
         }
     }
 })();

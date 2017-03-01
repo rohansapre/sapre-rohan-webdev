@@ -16,23 +16,28 @@
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
             vm.getOptions = WidgetService.getOptions();
-            vm.widget = WidgetService.findWidgetById($routeParams.wgid);
+            var promise = WidgetService.findWidgetById($routeParams.wgid);
+            promise.success(function (response) {
+                vm.widget = response;
+            });
         }
-
         init();
 
         function update() {
-            var widget = WidgetService.updateWidget(vm.widget._id, vm.widget);
-            if (widget) {
-                navigateToWidgets();
-            } else {
-                vm.error = "Failed to update widget";
-            }
+            var promise = WidgetService.updateWidget(vm.widget._id, vm.widget);
+            promise.success(function (response) {
+                if (response)
+                    navigateToWidgets();
+                else
+                    vm.error = "Failed to update widget";
+            });
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(vm.widget._id);
-            navigateToWidgets();
+            var promise = WidgetService.deleteWidget(vm.widget._id);
+            promise.success(function () {
+                navigateToWidgets();
+            });
         }
 
         function navigateToWidgets() {
