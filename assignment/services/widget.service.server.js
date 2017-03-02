@@ -7,6 +7,7 @@ module.exports = function (app) {
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
+    app.put("/page/:pageId/widget", updateWidgetOrder);
 
     var widgets = [
         { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -19,6 +20,21 @@ module.exports = function (app) {
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+    var multer = require('multer');
+
+    var storage = multer.diskStorage({
+        destination: function (req, file, cd) {
+            cd(null, __dirname + "/../../public/uploads")
+        },
+        filename: function (req, file, cb) {
+            var extArray = file.mimetype.split("/");
+            var extension = extArray[extArray.length-1];
+            cb(null, 'widget_name_' + Date.now() + '.' + extension)
+        }
+    });
+    var upload = multer({storage: storage});
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
 
     function createWidget(req, res) {
         widgets.push(req.body);
@@ -65,5 +81,32 @@ module.exports = function (app) {
             }
         }
         res.sendStatus(404);
+    }
+
+    function updateWidgetOrder(req, res) {
+        var start = parseInt(req.query.start);
+        var end = parseInt(req.query.end);
+        widgets.splice(end, 0, widgets.splice(start, 1)[0]);
+    }
+
+    function uploadImage(req, res) {
+        var pageId = null;
+        var widgetId = req.body.widgetId;
+        var width = req.body.width;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var myFile = req.file;
+        if(myFile) {
+            var destination = myFile.destination;
+
+            for (var w in widgets) {
+                if(widgets[w]._id == widgetId) {
+                    widgets[w].width = width;
+                    widgets[w].url = req.protocol + '://' + req.get('host') + '/uploads/' + myFile.filename;
+                    pageId = widgets[w].pageId;
+                }
+            }
+        }
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
     }
 };

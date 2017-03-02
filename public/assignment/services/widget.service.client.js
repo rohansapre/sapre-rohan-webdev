@@ -13,9 +13,12 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "getOptions": getOptions
+            "getOptions": getOptions,
+            "updateWidgetOrder": updateWidgetOrder
         };
         return api;
+
+        var options = [1,2,3,4,5,6];
 
         function createWidget(pageId, widget) {
             widget.pageId = pageId;
@@ -40,8 +43,11 @@
         }
 
         function getOptions() {
-            var options = [1,2,3,4,5,6];
             return options;
+        }
+
+        function updateWidgetOrder(pageId, start, end) {
+            return $http.put("/page/" + pageId + "/widget?start=" + start + "&end=" + end);
         }
     }
 })();
