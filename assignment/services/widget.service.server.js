@@ -7,6 +7,7 @@ module.exports = function (app) {
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
+    app.get("/api/widget/options", getOptions);
     app.put("/page/:pageId/widget", updateWidgetOrder);
 
     var widgets = [
@@ -20,6 +21,8 @@ module.exports = function (app) {
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+    var options = [1,2,3,4,5,6];
 
     var multer = require('multer');
 
@@ -81,6 +84,10 @@ module.exports = function (app) {
             }
         }
         res.sendStatus(404);
+    }
+
+    function getOptions(req, res) {
+        res.json(options);
     }
 
     function updateWidgetOrder(req, res) {

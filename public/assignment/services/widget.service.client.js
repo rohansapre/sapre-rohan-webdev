@@ -18,8 +18,6 @@
         };
         return api;
 
-        var options = [1,2,3,4,5,6];
-
         function createWidget(pageId, widget) {
             widget.pageId = pageId;
             widget._id = (new Date()).getTime().toString();
@@ -43,7 +41,7 @@
         }
 
         function getOptions() {
-            return options;
+            return $http.get("/api/widget/options");
         }
 
         function updateWidgetOrder(pageId, start, end) {

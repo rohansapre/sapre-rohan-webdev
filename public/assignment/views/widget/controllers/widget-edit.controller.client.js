@@ -15,7 +15,10 @@
             vm.userId = $routeParams.uid;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
-            vm.getOptions = WidgetService.getOptions();
+            var optionPromise = WidgetService.getOptions();
+            optionPromise.success(function (response) {
+                vm.options = response;
+            });
             var promise = WidgetService.findWidgetById($routeParams.wgid);
             promise.success(function (response) {
                 vm.widget = response;
