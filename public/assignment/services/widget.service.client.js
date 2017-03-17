@@ -13,7 +13,7 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "getOptions": getOptions,
+            "getSizes": getSizes,
             "updateWidgetOrder": updateWidgetOrder
         };
         return api;
@@ -40,7 +40,8 @@
             return $http.delete("/api/widget/" + widgetId);
         }
 
-        function getOptions() {
+        function getSizes() {
+            console.log("options");
             return $http.get("/api/widget/options");
         }
 

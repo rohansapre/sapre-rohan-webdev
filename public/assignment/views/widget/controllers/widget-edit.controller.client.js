@@ -15,7 +15,7 @@
             vm.userId = $routeParams.uid;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
-            var optionPromise = WidgetService.getOptions();
+            var optionPromise = WidgetService.getSizes();
             optionPromise.success(function (response) {
                 vm.options = response;
             });

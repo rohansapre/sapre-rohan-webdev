@@ -4,10 +4,10 @@
 module.exports = function (app) {
     app.post("/api/page/:pageId/widget", createWidget);
     app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
+    app.get("/api/widget/options", getOptions);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-    app.get("/api/widget/options", getOptions);
     app.put("/page/:pageId/widget", updateWidgetOrder);
 
     var widgets = [
@@ -87,6 +87,7 @@ module.exports = function (app) {
     }
 
     function getOptions(req, res) {
+        console.log(options);
         res.json(options);
     }
 
