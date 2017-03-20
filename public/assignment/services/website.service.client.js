@@ -17,11 +17,6 @@
         return api;
 
         function createWebsite(userId, website) {
-            website.developerId = userId;
-            var date = new Date();
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            website._id = date.getTime().toString();
-            website.lastUpdated = date.toLocaleDateString('en-US', options);
             return $http.post("/api/user/" + userId + "/website", website);
         }
 
@@ -34,9 +29,6 @@
         }
 
         function updateWebsite(websiteId, website) {
-            var date = new Date();
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            website.lastUpdated = date.toLocaleDateString('en-US', options);
             return $http.put("/api/website/" + websiteId, website);
         }
 

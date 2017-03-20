@@ -17,11 +17,6 @@
         return api;
 
         function createPage(websiteId, page) {
-            page.websiteId = websiteId;
-            var date = new Date();
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            page._id = date.getTime().toString();
-            page.lastUpdated = date.toLocaleDateString('en-US', options);
             return $http.post("/api/website/" + websiteId + "/page", page);
         }
 
@@ -34,9 +29,6 @@
         }
 
         function updatePage(pageId, page) {
-            var date = new Date();
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            page.lastUpdated = date.toLocaleDateString('en-US', options);
             return $http.put("/api/page/" + pageId, page);
         }
 

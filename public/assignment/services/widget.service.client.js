@@ -19,8 +19,6 @@
         return api;
 
         function createWidget(pageId, widget) {
-            widget.pageId = pageId;
-            widget._id = (new Date()).getTime().toString();
             return $http.post("/api/page/" + pageId + "/widget", widget);
         }
 

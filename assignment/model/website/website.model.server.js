@@ -20,7 +20,7 @@ function createWebsiteForUser(userId, website) {
     website._user = userId;
     websiteModel.create(website, function (err, website) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(website);
     });
@@ -31,7 +31,7 @@ function findAllWebsitesForUser(userId) {
     var deffered = q.defer();
     websiteModel.find({_user: userId}, function (err, websites) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(websites);
     });
@@ -42,7 +42,7 @@ function findWebsiteById(websiteId) {
     var deffered = q.defer();
     websiteModel.findById(websiteId, function (err, website) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(website);
     });
@@ -53,7 +53,7 @@ function updateWebsite(websiteId, website) {
     var deffered = q.defer();
     websiteModel.findByIdAndUpdate(websiteId, website, function (err, website) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(website);
     });
@@ -64,7 +64,7 @@ function deleteWebsite(websiteId) {
     var deffered = q.defer();
     websiteModel.findByIdAndRemove(websiteId, function (err, website) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(website);
     });

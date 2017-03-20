@@ -28,7 +28,7 @@ function createWidget(pageId, widget) {
                 widget.position = 1;
             widgetModel.create(widget, function (err, widget) {
                 if(err)
-                    deffered.abort(err);
+                    deffered.reject(err);
                 else
                     deffered.resolve(widget);
             });
@@ -42,7 +42,7 @@ function findAllWidgetsForPage(pageId) {
         .sort('position')
         .exec(function (err, widgets) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(widgets);
     });
@@ -53,7 +53,7 @@ function findWidgetById(widgetId) {
     var deffered = q.defer();
     widgetModel.findById(widgetId, function (err, widget) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(widget);
     });
@@ -64,7 +64,7 @@ function updateWidget(widgetId, widget) {
     var deffered = q.defer();
     widgetModel.findByIdAndUpdate(widgetId, widget, function (err, widget) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(widget);
     });
@@ -75,15 +75,15 @@ function deleteWidget(widgetId) {
     var deffered = q.defer();
     widgetModel.findById(widgetId, function (err, widget) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else {
             widgetModel.update({_page: widget._page, position: {$gt: widget.position}}, {$inc: {position: -1}}, {multi: true}, function (err, success) {
                 if(err)
-                    deffered.abort(err);
+                    deffered.reject(err);
                 else {
                     widgetModel.findByIdAndRemove(widgetId, function (err, widget) {
                         if(err)
-                            deffered.abort(err);
+                            deffered.reject(err);
                         else
                             deffered.resolve(widget);
                     });
@@ -102,11 +102,11 @@ function reorderWidget(pageId, start, end) {
     if(start < end) {
         widgetModel.update({_page: pageId, position: {$gt: start, $lte: end}}, {$inc: {position: -1}}, {multi: true}, function (err, success) {
             if(err)
-                deffered.abort(err);
+                deffered.reject(err);
             else {
                 widgetModel.findOneAndUpdate({_page: pageId, position: start}, {$set: {position: end}}, function (err, widget) {
                     if(err)
-                        deffered.abort(err);
+                        deffered.reject(err);
                     else
                         deffered.resolve(widget);
                 });
@@ -115,11 +115,11 @@ function reorderWidget(pageId, start, end) {
     } else {
         widgetModel.update({_page: pageId, position: {$gte: end, $lt: start}}, {$inc: {position: 1}}, {multi: true}, function (err, success) {
             if(err)
-                deffered.abort(err);
+                deffered.reject(err);
             else {
                 widgetModel.findOneAndUpdate({_page: pageId, position: start}, {$set: {position: end}}, function (err, widget) {
                     if(err)
-                        deffered.abort(err);
+                        deffered.reject(err);
                     else
                         deffered.resolve(widget);
                 });

@@ -20,7 +20,6 @@
                 vm.error = "Passwords don't match, please enter the password correctly."
             } else {
                 delete user['confirmPassword'];
-                user._id = (new Date()).getTime().toString();
                 var promise = UserService.createUser(user);
                 promise.success(function (response) {
                     var user = response;

@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var q = require('q');
-var pageSchema = require('./page.schema.server"');
+var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('Page', pageSchema);
 
 // api
@@ -20,7 +20,7 @@ function createPage(websiteId, page) {
     page._website = websiteId;
     pageModel.create(page, function (err, page) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(page);
     });
@@ -31,7 +31,7 @@ function findAllPagesForWebsite(websiteId) {
     var deffered = q.defer();
     pageModel.find({_website: websiteId}, function (err, pages) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(pages);
     });
@@ -42,7 +42,7 @@ function findPageById(pageId) {
     var deffered = q.defer();
     pageModel.findById(pageId, function (err, page) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(page);
     });
@@ -53,7 +53,7 @@ function updatePage(pageId, page) {
     var deffered = q.defer();
     pageModel.findByIdAndUpdate(pageId, page, function (err, page) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(page);
     });
@@ -64,7 +64,7 @@ function deletePage(pageId) {
     var deffered = q.defer();
     pageModel.findByIdAndRemove(pageId, function (err, page) {
         if(err)
-            deffered.abort(err);
+            deffered.reject(err);
         else
             deffered.resolve(page);
     });
