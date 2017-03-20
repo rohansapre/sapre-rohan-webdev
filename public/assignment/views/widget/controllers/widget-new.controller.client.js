@@ -14,22 +14,10 @@
             vm.userId = $routeParams.uid;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
-            vm.newWidgetHeader = {_id: "", widgetType: "HEADING", pageId: vm.pageId, size: 2, text: "New Header Text"};
-            vm.newWidgetImage = {
-                _id: "",
-                widgetType: "IMAGE",
-                pageId: vm.pageId,
-                width: "100%",
-                url: "http://lorempixel.com/400/200/"
-            };
-            vm.newWidgetYouTube = {
-                _id: "",
-                widgetType: "YOUTUBE",
-                pageId: vm.pageId,
-                width: "100%",
-                url: "https://youtu.be/AM2Ivdi9c4E"
-            };
-            vm.newWidgetHTML = {_id: "", widgetType: "HTML", pageId: vm.pageId, text: "<p>Lorem ipsum</p>"};
+            vm.newWidgetHeader = {type: "HEADING"};
+            vm.newWidgetImage = {type: "IMAGE", url: "http://lorempixel.com/400/200/"};
+            vm.newWidgetYouTube = {type: "YOUTUBE", url: "https://youtu.be/AM2Ivdi9c4E"};
+            vm.newWidgetHTML = {type: "HTML"};
         }
         init();
 

@@ -18,6 +18,7 @@
             var promise = WidgetService.findWidgetsByPageId(vm.pageId);
             promise.success(function (response) {
                 vm.widgets = response;
+                console.log(vm.widgets);
             });
         }
         init();

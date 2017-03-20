@@ -19,18 +19,23 @@ module.exports = widgetModel;
 function createWidget(pageId, widget) {
     var deffered = q.defer();
     widget._page = pageId;
+    console.log("db create wid");
     widgetModel.findOne({_page: pageId})
         .sort('-position')
         .exec(function (err, lastWidget) {
+            console.log(lastWidget);
             if(lastWidget)
                 widget.position = lastWidget.position+1;
             else
                 widget.position = 1;
+            console.log(widget);
             widgetModel.create(widget, function (err, widget) {
                 if(err)
                     deffered.reject(err);
-                else
+                else {
+                    console.log(widget);
                     deffered.resolve(widget);
+                }
             });
         });
     return deffered.promise;
@@ -54,8 +59,10 @@ function findWidgetById(widgetId) {
     widgetModel.findById(widgetId, function (err, widget) {
         if(err)
             deffered.reject(err);
-        else
+        else {
+            console.log("Found widget: " + widget);
             deffered.resolve(widget);
+        }
     });
     return deffered.promise;
 }

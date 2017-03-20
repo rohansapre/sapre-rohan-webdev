@@ -83,8 +83,10 @@ function deleteUser(userId) {
     userModel.findByIdAndRemove(userId, function (err, user) {
         if(err)
             deffered.reject(err);
-        else
+        else {
+            user.remove();
             deffered.resolve(user);
+        }
     });
     return deffered.promise;
 }

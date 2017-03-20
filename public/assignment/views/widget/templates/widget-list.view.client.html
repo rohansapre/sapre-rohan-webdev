@@ -28,12 +28,12 @@
         <div ng-repeat="widget in model.widgets">
             <div class="profile-block">
                 <div class="jga-toolbar">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget.pageId}}/widget/{{widget._id}}">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget._page}}/widget/{{widget._id}}">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
-                <div ng-switch="widget.widgetType">
+                <div ng-switch="widget.type">
                     <div ng-switch-when="HEADING">
                         <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
                     </div>

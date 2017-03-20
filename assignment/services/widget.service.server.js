@@ -52,6 +52,7 @@ module.exports = function (app, widgetModel) {
 
     function findWidgetById(req, res) {
         var widgetId = req.params.widgetId;
+        console.log(widgetId);
         widgetModel
             .findWidgetById(widgetId)
             .then(function (widget) {

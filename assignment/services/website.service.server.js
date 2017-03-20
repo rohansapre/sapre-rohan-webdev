@@ -24,8 +24,8 @@ module.exports = function (app, websiteModel) {
         var userId = req.params.userId;
         websiteModel
             .findAllWebsitesForUser(userId)
-            .then(function (website) {
-                res.json(website);
+            .then(function (websites) {
+                res.json(websites);
             }, function (error) {
                 res.sendStatus(500).send(error);
             });

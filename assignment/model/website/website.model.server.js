@@ -65,8 +65,10 @@ function deleteWebsite(websiteId) {
     websiteModel.findByIdAndRemove(websiteId, function (err, website) {
         if(err)
             deffered.reject(err);
-        else
+        else {
+            website.remove();
             deffered.resolve(website);
+        }
     });
     return deffered.promise;
 }

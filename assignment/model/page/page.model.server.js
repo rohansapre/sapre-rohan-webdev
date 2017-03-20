@@ -65,8 +65,10 @@ function deletePage(pageId) {
     pageModel.findByIdAndRemove(pageId, function (err, page) {
         if(err)
             deffered.reject(err);
-        else
+        else {
+            page.remove();
             deffered.resolve(page);
+        }
     });
     return deffered.promise;
 }
