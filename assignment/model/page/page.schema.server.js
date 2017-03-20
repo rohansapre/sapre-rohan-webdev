@@ -12,7 +12,7 @@ var pageSchema = mongoose.Schema({
     dateCreated:  { type: Date, default: Date.now() }
 }, {collection: 'page'});
 
-pageSchema.post('remove', function (next) {
+pageSchema.post('remove', function () {
     widgetModel.remove({_page: this._id}).exec();
 });
 

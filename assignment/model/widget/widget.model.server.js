@@ -27,7 +27,7 @@ function createWidget(pageId, widget) {
             if(lastWidget)
                 widget.position = lastWidget.position+1;
             else
-                widget.position = 1;
+                widget.position = 0;
             console.log(widget);
             widgetModel.create(widget, function (err, widget) {
                 if(err)

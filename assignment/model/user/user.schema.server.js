@@ -16,7 +16,7 @@ var userSchema = mongoose.Schema({
     dateCreated: { type: Date, default: Date.now() }
 }, {collection: 'user'});
 
-userSchema.post('remove', function (next) {
+userSchema.post('remove', function () {
     websiteModel.find({_user: this._id}, '_id', function (err, websites) {
         if(err == null) {
             pageModel.find({_website: {$in: websites}}, '_id', function (err, pages) {

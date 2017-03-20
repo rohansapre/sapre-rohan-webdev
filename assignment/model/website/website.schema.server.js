@@ -12,7 +12,7 @@ var websiteSchema = mongoose.Schema({
     dateCreated:  { type: Date, default: Date.now() }
 }, {collection: 'website'});
 
-websiteSchema.post('remove', function (next) {
+websiteSchema.post('remove', function () {
     pageModel.find({_website: this._id}, '_id', function (err, pages) {
         if(err == null) {
             console.log("Pages" + pages);
