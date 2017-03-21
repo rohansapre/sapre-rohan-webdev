@@ -89,3 +89,10 @@ li.borderless {
 div {
     overflow: hidden;
 }
+
+.image-spacing {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    width: 90%;
+}

@@ -25,12 +25,6 @@ websiteSchema.post('remove', function () {
         });
     widgetModel.remove({_page: {$in: website.pages}}).exec();
     pageModel.remove({_id: {$in: website.pages}}).exec();
-    // pageModel.find({_website: this._id}, '_id', function (err, pages) {
-    //     if(err == null) {
-    //         widgetModel.remove({_page: {$in: pages}}).exec();
-    //         pageModel.remove({_id: {$in: pages}}).exec();
-    //     }
-    // });
 });
 
 module.exports = websiteSchema;
