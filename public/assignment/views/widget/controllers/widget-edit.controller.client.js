@@ -22,7 +22,6 @@
             var promise = WidgetService.findWidgetById($routeParams.wgid);
             promise.success(function (response) {
                 vm.widget = response;
-                console.log("Widget: " + vm.widget);
             });
         }
         init();

@@ -15,14 +15,26 @@ pageModel.deletePage = deletePage;
 
 module.exports = pageModel;
 
+var websiteModel = require('../website/website.model.server');
+
 function createPage(websiteId, page) {
     var deffered = q.defer();
     page._website = websiteId;
     pageModel.create(page, function (err, page) {
         if(err)
             deffered.reject(err);
-        else
-            deffered.resolve(page);
+        else {
+            websiteModel.findWebsiteById(page._website)
+                .then(function (website) {
+                    website.pages.push(page._id);
+                    website.save(function (err) {
+                        if(err)
+                            deffered.reject(err);
+                        else
+                            deffered.resolve(page);
+                    });
+                });
+        }
     });
     return deffered.promise;
 }

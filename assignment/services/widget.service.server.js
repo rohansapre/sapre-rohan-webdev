@@ -52,7 +52,6 @@ module.exports = function (app, widgetModel) {
 
     function findWidgetById(req, res) {
         var widgetId = req.params.widgetId;
-        console.log(widgetId);
         widgetModel
             .findWidgetById(widgetId)
             .then(function (widget) {
@@ -86,7 +85,6 @@ module.exports = function (app, widgetModel) {
     }
 
     function getOptions(req, res) {
-        console.log(options);
         res.json(options);
     }
 
@@ -94,7 +92,6 @@ module.exports = function (app, widgetModel) {
         var pageId = req.params.pageId;
         var start = parseInt(req.query.start);
         var end = parseInt(req.query.end);
-        console.log(start + " " + end);
         widgetModel
             .reorderWidget(pageId, start, end)
             .then(function (widget) {

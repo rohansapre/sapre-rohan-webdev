@@ -2,9 +2,6 @@
  * Created by rohansapre on 3/17/17.
  */
 var mongoose = require('mongoose');
-var websiteModel = require('../website/website.model.server');
-var pageModel = require('../page/page.model.server');
-var widgetModel = require('../widget/widget.model.server');
 var userSchema = mongoose.Schema({
     username: { type: String, required: true },
     password: String,
@@ -17,17 +14,28 @@ var userSchema = mongoose.Schema({
 }, {collection: 'user'});
 
 userSchema.post('remove', function () {
-    websiteModel.find({_user: this._id}, '_id', function (err, websites) {
+    var user = this;
+    var websiteModel = require('../website/website.model.server');
+    var pageModel = require('../page/page.model.server');
+    var widgetModel = require('../widget/widget.model.server');
+    pageModel.find({_website: {$in: user.websites}}, '_id', function (err, pages) {
         if(err == null) {
-            pageModel.find({_website: {$in: websites}}, '_id', function (err, pages) {
-                if(err == null) {
-                    widgetModel.remove({_page: {$in: pages}}).exec();
-                    pageModel.remove({_id: {$in: pages}}).exec();
-                }
-            });
-            websiteModel.remove({_id: {$in: websites}}).exec();
+            widgetModel.remove({_page: {$in: pages}}).exec();
+            pageModel.remove({_id: {$in: pages}}).exec();
         }
-    })
+    });
+    websiteModel.remove({_id: {$in: user.websites}}).exec();
+    // websiteModel.find({_user: this._id}, '_id', function (err, websites) {
+    //     if(err == null) {
+    //         pageModel.find({_website: {$in: websites}}, '_id', function (err, pages) {
+    //             if(err == null) {
+    //                 widgetModel.remove({_page: {$in: pages}}).exec();
+    //                 pageModel.remove({_id: {$in: pages}}).exec();
+    //             }
+    //         });
+    //         websiteModel.remove({_id: {$in: websites}}).exec();
+    //     }
+    // })
 });
 
 module.exports = userSchema;

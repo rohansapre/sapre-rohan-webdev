@@ -2,7 +2,6 @@
  * Created by rohansapre on 3/17/17.
  */
 var mongoose = require('mongoose');
-var widgetModel = require('../widget/widget.model.server');
 var pageSchema = mongoose.Schema({
     _website: {type: mongoose.Schema.Types.ObjectId, ref: 'Website'},
     name: String,
@@ -13,7 +12,19 @@ var pageSchema = mongoose.Schema({
 }, {collection: 'page'});
 
 pageSchema.post('remove', function () {
-    widgetModel.remove({_page: this._id}).exec();
+    var page = this;
+    var websiteModel = require('../website/website.model.server');
+    var widgetModel = require('../widget/widget.model.server');
+    websiteModel.findWebsiteById(page._website)
+        .then(function (website) {
+            var index = website.pages.indexOf(page._id);
+            if(index > -1) {
+                website.pages.splice(index, 1);
+                website.save();
+            }
+        });
+    widgetModel.remove({_id: {$in: page.widgets}}).exec();
+    // widgetModel.remove({_page: this._id}).exec();
 });
 
 module.exports = pageSchema;

@@ -16,25 +16,32 @@ widgetModel.reorderWidget = reorderWidget;
 
 module.exports = widgetModel;
 
+var pageModel = require('../page/page.model.server');
+
 function createWidget(pageId, widget) {
     var deffered = q.defer();
     widget._page = pageId;
-    console.log("db create wid");
     widgetModel.findOne({_page: pageId})
         .sort('-position')
         .exec(function (err, lastWidget) {
-            console.log(lastWidget);
             if(lastWidget)
                 widget.position = lastWidget.position+1;
             else
                 widget.position = 0;
-            console.log(widget);
             widgetModel.create(widget, function (err, widget) {
                 if(err)
                     deffered.reject(err);
                 else {
-                    console.log(widget);
-                    deffered.resolve(widget);
+                    pageModel.findPageById(widget._page)
+                        .then(function (page) {
+                            page.widgets.push(widget._id);
+                            page.save(function (err) {
+                                if(err)
+                                    deffered.reject(err);
+                                else
+                                    deffered.resolve(widget);
+                            });
+                        });
                 }
             });
         });
@@ -60,7 +67,6 @@ function findWidgetById(widgetId) {
         if(err)
             deffered.reject(err);
         else {
-            console.log("Found widget: " + widget);
             deffered.resolve(widget);
         }
     });
@@ -91,15 +97,14 @@ function deleteWidget(widgetId) {
                     widgetModel.findByIdAndRemove(widgetId, function (err, widget) {
                         if(err)
                             deffered.reject(err);
-                        else
+                        else {
+                            widget.remove();
                             deffered.resolve(widget);
+                        }
                     });
                 }
             });
         }
-            // widgetModel.find({_page: widget._page})
-            //     .where('position').gt(widget.position)
-            //     .update({_page: widget._page, position: {$gt: widget.position}}, {$set: {position: }})
     });
     return deffered.promise;
 }

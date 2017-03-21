@@ -9,5 +9,3 @@
 // };
 //
 // module.exports = model;
-
-// model.userModel.setModel(model);

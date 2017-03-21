@@ -15,14 +15,26 @@ websiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = websiteModel;
 
+var userModel = require('../user/user.model.server');
+
 function createWebsiteForUser(userId, website) {
     var deffered = q.defer();
     website._user = userId;
     websiteModel.create(website, function (err, website) {
         if(err)
             deffered.reject(err);
-        else
-            deffered.resolve(website);
+        else {
+            userModel.findUserById(website._user)
+                .then(function (user) {
+                    user.websites.push(website._id);
+                    user.save(function (err) {
+                        if(err)
+                            deffered.reject(err);
+                        else
+                            deffered.resolve(website);
+                    });
+                });
+        }
     });
     return deffered.promise;
 }

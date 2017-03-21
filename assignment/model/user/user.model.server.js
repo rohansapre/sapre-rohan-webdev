@@ -5,8 +5,6 @@ var mongoose = require('mongoose');
 var q = require('q');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('User', userSchema);
-// var model = {};
-// var model = require('../models.server');
 
 // api
 userModel.createUser = createUser;
@@ -15,13 +13,8 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-// userModel.setModel = setModel;
 
 module.exports = userModel;
-
-// function setModel(_model) {
-//     model=_model;
-// }
 
 function createUser(user) {
     var deffered = q.defer();

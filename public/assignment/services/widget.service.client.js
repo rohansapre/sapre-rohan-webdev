@@ -39,7 +39,6 @@
         }
 
         function getSizes() {
-            console.log("options");
             return $http.get("/api/widget/options");
         }
 
