@@ -24,7 +24,6 @@ pageSchema.post('remove', function () {
             }
         });
     widgetModel.remove({_id: {$in: page.widgets}}).exec();
-    // widgetModel.remove({_page: this._id}).exec();
 });
 
 module.exports = pageSchema;

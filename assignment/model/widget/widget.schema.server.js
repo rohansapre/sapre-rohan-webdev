@@ -2,7 +2,7 @@
  * Created by rohansapre on 3/17/17.
  */
 var mongoose = require('mongoose');
-var types = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT'];
+var types = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'TEXT'];
 var widgetSchema = mongoose.Schema({
     _page: {type: mongoose.Schema.Types.ObjectId, ref: 'Page'},
     type: {type: String, enum: types},

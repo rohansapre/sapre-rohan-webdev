@@ -62,6 +62,7 @@ function findUserByCredentials(username, password) {
 
 function updateUser(userId, user) {
     var deffered = q.defer();
+    updateModel.update({})
     userModel.findByIdAndUpdate(userId, user, function (err, user) {
         if(err)
             deffered.reject(err);

@@ -18,6 +18,7 @@
             vm.newWidgetImage = {type: "IMAGE", url: "http://lorempixel.com/400/200/"};
             vm.newWidgetYouTube = {type: "YOUTUBE", url: "https://youtu.be/AM2Ivdi9c4E"};
             vm.newWidgetHTML = {type: "HTML"};
+            vm.newWidgetText = {type: "TEXT"};
         }
         init();
 

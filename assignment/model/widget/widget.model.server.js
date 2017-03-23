@@ -111,32 +111,27 @@ function deleteWidget(widgetId) {
 
 function reorderWidget(pageId, start, end) {
     var deffered = q.defer();
-    if(start < end) {
-        widgetModel.update({_page: pageId, position: {$gt: start, $lte: end}}, {$inc: {position: -1}}, {multi: true}, function (err, success) {
-            if(err)
-                deffered.reject(err);
-            else {
-                widgetModel.findOneAndUpdate({_page: pageId, position: start}, {$set: {position: end}}, function (err, widget) {
+    widgetModel
+        .find({ _page: pageId}, function (err, widgets) {
+            widgets.forEach(function (widget) {
+                if (start < end) {
+                    if (widget.position == start)
+                        widget.position = end;
+                    else if (widget.position > start && widget.position <= end)
+                        widget.position = widget.position - 1;
+                } else {
+                    if (widget.position == start)
+                        widget.position = end;
+                    else if (widget.position < start && widget.position >= end)
+                        widget.position = widget.position + 1;
+                }
+                widget.save(function (err, widget) {
                     if(err)
                         deffered.reject(err);
                     else
                         deffered.resolve(widget);
                 });
-            }
+            });
         });
-    } else {
-        widgetModel.update({_page: pageId, position: {$gte: end, $lt: start}}, {$inc: {position: 1}}, {multi: true}, function (err, success) {
-            if(err)
-                deffered.reject(err);
-            else {
-                widgetModel.findOneAndUpdate({_page: pageId, position: start}, {$set: {position: end}}, function (err, widget) {
-                    if(err)
-                        deffered.reject(err);
-                    else
-                        deffered.resolve(widget);
-                });
-            }
-        });
-    }
     return deffered.promise;
 }
